@@ -51,7 +51,7 @@ export default function AddPlaylistModal({ onSave, onClose }) {
                 <h2>Add New Playlist</h2>
                 <input
                     type="text"
-                    placeholder="Playlist Name (e.g., 'NeetCode 150')"
+                    placeholder="Playlist Name (e.g., &#39;NeetCode 150&#39;)" // 🔧 Escaped apostrophe
                     value={playlistName}
                     onChange={(e) => setPlaylistName(e.target.value)}
                     style={styles.input}
@@ -59,7 +59,10 @@ export default function AddPlaylistModal({ onSave, onClose }) {
 
                 <div style={styles.importSection}>
                     <h3 style={styles.sectionTitle}>Option 1: Import from CSV</h3>
-                    <p style={styles.description}>CSV must have 'url', 'title', 'difficulty', 'topics' headers.</p>
+                    <p style={styles.description}>
+                        CSV must have &#39;url&#39;, &#39;title&#39;, &#39;difficulty&#39;, &#39;topics&#39; headers.
+                        {/* 🔧 Escaped all apostrophes */}
+                    </p>
                     <input
                         type="file"
                         accept=".csv"
@@ -93,20 +96,20 @@ export default function AddPlaylistModal({ onSave, onClose }) {
 
 // --- STYLES ---
 const styles = {
-    overlay: { /* ... existing style ... */
+    overlay: {
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.7)', display: 'flex',
         justifyContent: 'center', alignItems: 'center', zIndex: 1000,
     },
-    modal: { /* ... existing style ... */
+    modal: {
         backgroundColor: 'var(--secondary-bg)', padding: '2rem', borderRadius: '8px',
         width: '90%', maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '1rem',
     },
-    input: { /* ... existing style ... */
+    input: {
         padding: '10px', borderRadius: '4px', border: '1px solid var(--disabled-color)',
         backgroundColor: 'var(--primary-bg)', color: 'var(--primary-text)', fontSize: '1rem',
     },
-    textarea: { /* ... existing style ... */
+    textarea: {
         padding: '10px', borderRadius: '4px', border: '1px solid var(--disabled-color)',
         backgroundColor: 'var(--primary-bg)', color: 'var(--primary-text)', fontSize: '1rem',
         fontFamily: 'var(--font-family)', resize: 'vertical', width: '100%'
@@ -115,7 +118,7 @@ const styles = {
         display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginTop: '1rem',
         borderTop: '1px solid var(--disabled-color)', paddingTop: '1rem'
     },
-    cancelButton: { /* ... existing style ... */
+    cancelButton: {
         backgroundColor: 'var(--disabled-color)', color: 'var(--secondary-text)',
     },
     importSection: {

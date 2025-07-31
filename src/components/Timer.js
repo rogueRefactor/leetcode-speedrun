@@ -25,8 +25,6 @@ export default function Timer({ onComplete, startSignal }) {
         setIsActive(true);
     };
 
-    // --- FULL FUNCTION DEFINITIONS ARE NOW INCLUDED ---
-
     const handleNextPhase = useCallback(() => {
         setIsActive(false);
 
@@ -70,15 +68,12 @@ export default function Timer({ onComplete, startSignal }) {
         setIsActive(true);
     }, [phase, time]);
 
-
-    // Effect to listen for the start signal from the parent page
     useEffect(() => {
         if (startSignal && phase === 'idle') {
             handleStart();
         }
     }, [startSignal, phase]);
 
-    // The core timer countdown effect
     useEffect(() => {
         let interval;
         if (isActive && time > 0) {
@@ -86,12 +81,10 @@ export default function Timer({ onComplete, startSignal }) {
                 setTime(prevTime => prevTime - 1);
             }, 1000);
         } else if (isActive && time === 0) {
-            // Automatically move to next phase when time runs out
             handleNextPhase();
         }
         return () => clearInterval(interval);
     }, [isActive, time, handleNextPhase]);
-
 
     const getPhaseInfo = () => {
         switch (phase) {
@@ -120,15 +113,15 @@ export default function Timer({ onComplete, startSignal }) {
                 {phase === 'idle' ? '10:00' : formatTime(time)}
             </div>
 
-            {time === 0 && <div style={styles.warning}>Time's up! Moving to next phase.</div>}
+            {time === 0 && <div style={styles.warning}>Time&#39;s up! Moving to next phase.</div>} {/* 🔧 Escaped apostrophe */}
 
             <div style={styles.controls}>
                 {phase === 'thinking' && (
-                    <button onClick={handleNextPhase} style={styles.primaryButton}>I'm Ready to Code</button>
-                )}
+                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;m Ready to Code</button> {/* 🔧 Escaped apostrophe */}
+                    )}
                 {phase === 'coding' && (
-                    <button onClick={handleNextPhase} style={styles.primaryButton}>I've Finished Coding</button>
-                )}
+                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;ve Finished Coding</button> {/* 🔧 Escaped apostrophe */}
+                    )}
                 {phase === 'review' && (
                     <button onClick={handleNextPhase} style={styles.primaryButton}>Finished Reviewing</button>
                 )}
