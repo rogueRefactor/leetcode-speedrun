@@ -113,14 +113,14 @@ export default function Timer({ onComplete, startSignal }) {
                 {phase === 'idle' ? '10:00' : formatTime(time)}
             </div>
 
-            {time === 0 && <div style={styles.warning}>Time&#39;s up! Moving to next phase.</div>} {/* 🔧 Escaped apostrophe */}
+            {time === 0 && <div style={styles.warning}>Time&#39;s up! Moving to next phase.</div>}
 
             <div style={styles.controls}>
                 {phase === 'thinking' && (
-                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;m Ready to Code</button> {/* 🔧 Escaped apostrophe */}
+                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;m Ready to Code</button>
                     )}
                 {phase === 'coding' && (
-                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;ve Finished Coding</button> {/* 🔧 Escaped apostrophe */}
+                    <button onClick={handleNextPhase} style={styles.primaryButton}>I&#39;ve Finished Coding</button>
                     )}
                 {phase === 'review' && (
                     <button onClick={handleNextPhase} style={styles.primaryButton}>Finished Reviewing</button>
